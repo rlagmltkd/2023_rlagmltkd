@@ -28,7 +28,7 @@ import random
 
 answer = random.randrange(0, 10)
 user_input = -1
-# 사용자가 answer 맞출때까지 반복
+# 사용자가 answer 맞출 때까지 반복
 
 while user_input != answer:
     user_input = int(input("값을 입력하세요 >>"))
