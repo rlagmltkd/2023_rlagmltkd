@@ -15,4 +15,4 @@ elif score >= 60:
     print("D반으로 가세요")
 
 else:
-    print("E반으로 가세요")
+    print("E반 으로 가세요")
