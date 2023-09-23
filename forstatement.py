@@ -19,7 +19,7 @@ for i in scores:
     print(i)
 if i > 100 or i < 0:
     print("skip", i)
-    continue
+   
 sum = sum + i
 print(sum)
 
