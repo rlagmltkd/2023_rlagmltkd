@@ -65,13 +65,18 @@ def getHangmanInput(hangman_input_history):
 
 
 def runHangMan():
-    user_input_history = []
+    Hangman_input_history = []
+    chance = 7
 
+    word = getRandomWord()
 
-word = getRandomWord()
-print("_" * len(word))
+    alphabet = getHangmanInput()
 
-user_input = getHangmanInput(hangman_input_history)
+    if word.find(alphabet) != -1:
+        print("CORRECT")
+    else:
+        chance = chance - 1
+    print("LEFT CHANCE", chance)
 
 
 def runUpDown(): ...
