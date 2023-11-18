@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 # 색상 dictionary
@@ -37,12 +39,32 @@ def initScreen():
     pygame.display.update()
 
 
+def addNewBlock():
+    canSet = False
+
+    while not canSet:
+        randomX = random.randint(0, 3)
+        randomY = random.randint(0, 3)
+
+        if board[randomX][randomY] == -1:
+            canSet = True
+
+    board[randomX][randomY] = 2 if random.randint(1, 10) < 10 else 4  # 10분의 1 확률로 4, 이외에는 2가 추가되도록
+
+
 def setEventListener():
     global isGameRunning
     for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            isGameRunning = False
+            return
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_q:
                 isGameRunning = False
+                return
+
             elif event == pygame.K_DOWN:
                 print("아래")
             elif event == pygame.K_UP:
@@ -52,6 +74,7 @@ def setEventListener():
             elif event == pygame.K_LEFT:
                 print("왼쪽")
 
+            addNewBlock()
 
 def drawDisplay():
     global screen
@@ -73,7 +96,6 @@ def drawDisplay():
                 pygame.draw.rect(screen, colors[data], [x, y, blockWidth, blockHeight])  # filled rect
 
     pygame.display.flip()  # 화면 다시그리기
-
 
 def run2048():
     pygame.init()
